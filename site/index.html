@@ -1,26 +1,131 @@
-<h1>Matt Borgman</h1>
-<h2>Pages:</h2>
-<ul>
-	<li>
-		<a href="index.html">
+<!DOCTYPE html>
+<html>
+	<head>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src='js/main.js'></script>
+		<title>
 			Home
-		</a>
-	</li>
-	<li>
-		<a href="resume_cv.html"></a>
-			Resume/CV
-	</li>
-	<li>
-		<a href="bio.html"></a>
-			Personal Biography
-	</li>
-</ul>
-<h2>Sites:</h2>
-<ul>
-	<li>
-		<a href="http://facebook.com/mgborgman">
-			Check out my Facebook
-		</a>
+		</title>
+	</head> 
 
-	</li>
-</ul>
+	<body>
+
+		<h1>Matt Borgman</h1>
+
+		<img id="matt_img" src="img/matt_and_ashley.jpg">
+
+		<h2>Pages:</h2>
+
+		<ul>
+			<li>
+				<a href="index.html">
+					Home
+				</a>
+			</li>
+			<li>
+				<a href="resume_cv.html">
+					Resume/CV
+				</a>
+					
+			</li>
+			<li>
+				<a href="bio.html">
+					Personal Biography
+				</a>
+					
+			</li>
+		</ul>
+
+
+		<table>
+			<tr>
+				<th>
+					Name
+				</th>
+				<th>
+					Phone #
+				</th>
+			</tr>
+			<tr>
+				<td>
+					Matt
+				</td>
+				<td>
+					(360) 555-1234
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Ashley
+				</td>
+				<td>
+					(360) 555-6789
+				</td>
+			</tr>
+		</table>
+
+		<h2>Sites:</h2>
+
+		<ul>
+			<li>
+				<a href="http://facebook.com/mgborgman">
+					Check out my Facebook
+				</a>
+
+			</li>
+		</ul>
+
+
+		<form method="POST">
+			<fieldset id="details_border">
+				<legend id="details">
+					Your Details:
+				</legend>
+				Name: <input id="name" type="text" name="name"></br>
+				Email: <input id="email" type="text" name="email"></br>
+			</fieldset></br>
+
+			<fieldset id="review_border">
+				<legend id="review">
+					Your Review:
+				</legend>
+
+				<label id="feedback">
+					How did you hear about us?
+				</label>
+
+				<select name='found_how'>
+					<option id="google">Google</option>
+					<option id="magazine">Magazine</option>
+					<option id="friends">Friend</option>
+					<option id="other">Other</option>
+				</select><br><br>
+
+				<label id="visit_again">
+					Would you visit again?
+				</label><br>
+				<label id="radio_yes">
+				<input type="Radio" name="would_visit">Yes
+				</label>
+				<label id="radio_no">
+				<input type="Radio" name="would_visit">No
+				</label>
+				<label id="radio_maybe">
+				<input type="Radio" name="would_visit">Maybe
+				</label>
+				<br><br>
+
+				<label id="comments">
+				Comments:<br><textarea></textarea><br>
+				</label>
+
+				<label id="sign_up">
+				<input type="checkbox" name="sign_up">Sign me up for email updates <br>
+				</label>
+
+				<input id='submit' type="submit" value="Submit review" name="submit">
+			</fieldset>
+		</form>
+
+	</body>
+</html>
