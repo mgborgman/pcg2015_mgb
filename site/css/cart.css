@@ -1,0 +1,20 @@
+table {
+    background-color: forestgreen;
+    border: solid black;
+}
+
+th {
+    border: solid black;
+}
+td {
+    border: solid black;
+}
+
+fieldset {
+    width: 33%;
+    background-color: forestgreen;
+}
+
+form {
+    display: inline-block;
+}

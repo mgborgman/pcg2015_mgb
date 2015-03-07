@@ -1,0 +1,11 @@
+form {
+    display: inline-block;
+}
+
+input {
+    margin-bottom: 5px;
+}
+
+.required {
+    border-color: red;
+}

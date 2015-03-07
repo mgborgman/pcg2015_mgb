@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>User Registration</title>
+    <link rel="stylesheet" type="text/css" href="css/registration.css">
+</head>
+<body>
+    <form name="userRegistration"  method="post">
+        <label>
+            <input id="username" class="validate" type="text" name="username" placeholder="Username"><br>
+        </label>
+        <label>
+            <input id="email" class="validate" type="text" name="email" placeholder="Email"><br>
+        </label>
+        <label>
+            <input type="password" id="password" class="password" name="password" placeholder="Password"><br>
+        </label>
+        <label>
+            <input type="password" id="verifyPassword" class="password" name="verifyPassword" placeholder="Verify Password"><br>
+        </label>
+        <label>
+            <input id="dob" class="validate" type="date" name="dob"><br>
+        </label>
+        <label>
+            <input type="button" value="Submit" onclick="return formValidation()">
+        </label>
+    </form>
+
+<script>
+
+    function formValidation() {
+        var inputFields = document.getElementsByTagName("input");
+        var length = inputFields.length;
+        var valid = true;
+        for(var i = 0; i < length; i++) {
+            if (inputFields[i].value == null || inputFields[i].value == '') {
+                console.log(inputFields[i]);
+                inputFields[i].classList.add("required");
+                valid = false;
+            }
+            else if (inputFields[i].value != null || inputFields[i].value != '') {
+                    inputFields[i].classList.remove("required");
+                }
+
+
+        }
+        if(!valid) {
+            alert("This is a required field");
+        }
+
+    }
+
+//    function validateForm() {
+//        var username = document.getElementById("username");
+//        var usernameValue = username.value;
+//        var email = document.getElementById("email");
+//        var emailValue = email.value;
+//        var password = document.getElementById("password");
+//        var passwordValue = password.value;
+//        var passwordVerify = document.getElementById("verifyPassword");
+//        var passwordVerifyValue = passwordVerify.value;
+//        var dob = document.getElementById("dob");
+//        var dobValue = dob.value;
+//
+//    }
+</script>
+
+</body>
+</html>
