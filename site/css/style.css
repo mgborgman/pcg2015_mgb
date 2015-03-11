@@ -1,7 +1,9 @@
-li {
+ul li {
 	display: inline-block;
-	padding-left: 10px;
+}
 
+ul li a {
+	padding: 20px;
 }
 
 a {
@@ -12,6 +14,21 @@ a {
 a:hover {
 	font-weight: bold;
 	text-decoration: underline;
+}
+
+button {
+	padding: 20px;
+	margin: -4px;
+}
+
+button a {
+	color: black;
+}
+
+button.selected {
+	background-color: yellow;
+	font-weight: bold;
+
 }
 
 body {
@@ -27,6 +44,10 @@ h1 {
 
 th {
 	text-align: left;
+}
+
+td {
+	color: white;
 }
 
 input {

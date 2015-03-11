@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<script type="text/javascript" src='js/main.js'></script>
 		<title>
-			Resume/CV
+			Login
 		</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
 
 	<body>
-
 		<h1>
-			Resume
+			Login
 		</h1>
 
 		<ul>
@@ -23,7 +21,7 @@
 				</button>
 			</li>
 			<li>
-				<button class="selected">
+				<button>
 					<a href="resume_cv.html">
 						Resume/CV
 					</a>
@@ -37,13 +35,26 @@
 				</button>					
 			</li>
 			<li>
-				<button>
+				<button class="selected">
 					<a href="login.html">
 						User Login
 					</a>
 				</button>
 			</li>
 		</ul><br><br>
-	</body>
 
-</html>
+		<form method="POST">
+			
+			<label>
+				<input type="text" name="user_login" placeholder="Username"><br>
+			</label>
+			<label>
+				<input type="password" name="password" placeholder="Password"><br>
+			</label>
+			<label>
+				<input type="submit" name="submit" value="Login"><br><br>
+			</label>
+		</form>
+
+
+	</body>

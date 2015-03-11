@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>shopping cart</title>
+    <link rel="stylesheet" type="text/css" href="css/cart.css">
+</head>
+<body>
+    <!--<form>-->
+        <!--<fieldset>-->
+
+            <!--<label>-->
+                <!--Name:<input type="text" name="name"><br>-->
+            <!--</label>-->
+            <!--<label>-->
+                <!--Email:<input type="text" name="email"><br>-->
+            <!--</label>-->
+            <!--<label>-->
+                <!--Phone:<input type="text" name="phone"><br>-->
+            <!--</label>-->
+        <!--</fieldset>-->
+    <!--</form>-->
+
+    <input id="addButton" type="button"  value="Add Row">
+
+    <table id="cart-1">
+        <tr>
+            <th>Line</th>
+            <th>Quantity</th>
+            <th>Product Code</th>
+            <th>Product Description</th>
+            <th>Price Each</th>
+            <th>Subtotal</th>
+            <th>Actions</th>
+        </tr>
+        <tr class="cart_line">
+            <td class="line_number">1</td>
+            <td class="quantity"><input type="number" min="0" value="1"></td>
+            <td class="product_code">G6</td>
+            <td class="product_description">T-Shirt, Blue</td>
+            <td class="price_each">9</td>
+            <td class="subtotal">1</td>
+            <td class="remove_row"><a onclick="removeRow(this);" href="#">Remove</a></td>
+        </tr>
+        <tr class="cart_line">
+            <td class="line_number">2</td>
+            <td class="quantity"><input type="number" min="0" value="1"></td>
+            <td class="product_code">PC5250</td>
+            <td class="product_description">T-Shirt, Red</td>
+            <td class="price_each">12</td>
+            <td class="subtotal">1</td>
+            <td class="remove_row"><a onclick="removeRow(this);" href="#">Remove</a></td>
+        </tr>
+        <tr class="cart_line_total">
+            <td class="total" colspan="5" style="text-align: right">Total:</td>
+            <td id="total">0</td>
+        </tr>
+    </table>
+
+<script>
+
+    function removeRow(r) {
+        i = r.parentNode.parentNode.rowIndex;
+        var table = document.getElementById("cart-1");
+        table.deleteRow(i);
+
+        }
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        var table = document.getElementById("cart-1");
+        var lines = table.getElementsByClassName("cart_line")
+        var line_count = lines.length;
+
+
+        var getTotal = function () {
+            var total = 0;
+
+            for (var i = 0; i < line_count; i++) {
+                var line = lines[i];
+
+                var qty = line.getElementsByClassName("quantity")[0];
+                var quantity = parseFloat(qty.getElementsByTagName("input")[0].value);
+
+                var price = parseFloat(line.getElementsByClassName("price_each")[0].innerHTML);
+                var subtotalElement = line.getElementsByClassName("subtotal")[0];
+
+                var subTotal = quantity * price;
+                subtotalElement.innerHTML = subTotal;
+                total += subTotal;
+            }
+            var totalElement = document.getElementById("total");
+            totalElement.innerHTML = total;
+        };
+
+        for (var c = 0; c < line_count; c++) {
+            var line = lines[c];
+            var quantityElement = line.getElementsByTagName("input")[0];
+            quantityElement.addEventListener("change", function () {
+                getTotal();
+            });
+        }
+        getTotal();
+
+        var addRow = function() {
+            var row = document.getElementsByClassName("cart_line")[0];
+            var table = document.getElementById("cart-1");
+            var clone = row.cloneNode(true);
+            table.appendChild(clone);
+
+            var addButton = document.getElementById("addButton");
+            addButton.addEventListener("click", function () {
+                addRow();
+            });
+
+            for (var c = 0; c < line_count; c++) {
+            var line = lines[c];
+            var quantityElement = line.getElementsByTagName("input")[0];
+            quantityElement.addEventListener("change", function () {
+                getTotal();
+            });
+        }
+        }
+
+
+    });
+
+</script>
+</body>
+</html>
