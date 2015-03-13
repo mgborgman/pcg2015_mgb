@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+
+<script>
+    clicks = {
+        'a.example.com' : {
+            '2015-12-31' : 123
+        }
+    };
+
+    newClicks = [
+            {'a.example.com' : '2015-12-31'},
+            {'b.example.com' : '2015-12-31'}
+    ];
+
+
+    function adClick() {
+        for (key in clicks) {
+//            console.log(Object.keys(clicks));
+            for (var i = 0; i < newClicks.length; i++) {
+                console.log(Object.keys(clicks));
+                console.log(Object.keys(newClicks[i]));
+                console.log(JSON.stringify(Object.keys(clicks)) == JSON.stringify(Object.keys(newClicks[i])));
+                var clicksKeys = JSON.stringify(Object.keys(clicks));
+                var newClicksKeys = JSON.stringify(Object.keys(newClicks[i]));
+                //          console.log(clicks.hasOwnProperty('a.example.com'));
+                if (clicksKeys == newClicksKeys) {
+                    console.log('if');
+                    for (value in clicks[key]) {
+                        clicks[key][value]++;
+                        console.log(clicks[key][value]);
+                    }
+                }
+                else if (clicksKeys != newClicksKeys) {
+                    console.log('else if');
+
+                    console.log(clicks);
+                }
+//
+
+            }
+//        return clicks;
+        }
+    }
+
+
+//    console.log(clicks['a.example.com']);
+    adClick(newClicks);
+</script>
+</body>
+</html>
