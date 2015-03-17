@@ -5,6 +5,132 @@
     <title></title>
 </head>
 <body>
+<table>
+    <tr>
+        <td colspan="4">Test Output</td>
+    </tr>
+    <tr>
+        <td><button id="AC" value="AC" onclick="storeValue(this.id)">AC</button></td>
+        <td><button id="+/-" value="+/-" onclick="storeValue(this.id)">+/-</button></td>
+        <td><button id="%" value="%" onclick="storeValue(this.id)">%</button></td>
+        <td><button id="/" value="/" onclick="storeValue(this.id)">/</button></td>
+    </tr>
+    <tr>
+        <td><input type="button" id="7" value=7></td>
+        <td><button id="8" value="8" onclick="storeValue(this.id)"></button></td>
+        <td><button id="9" value="9" onclick="storeValue(this.id)">9</button></td>
+        <td><button id="x" value="x" onclick="storeValue(this.id)">x</button></td>
+    </tr>
+    <tr>
+        <td><button id="4" value="4" onclick="storeValue(this.id)">4</button></td>
+        <td><button id="5" value="5" onclick="storeValue(this.id)">5</button></td>
+        <td><button id="6" value="6" onclick="storeValue(this.id)">6</button></td>
+        <td><button id="-" value="-" onclick="storeValue(this.id)">-</button></td>
+    </tr>
+    <tr>
+        <td><button id="1" value="1" onclick="storeValue(this.id)">1</button></td>
+        <td><button id="2" value="2" onclick="storeValue(this.id)">2</button></td>
+        <td><button id="3" value="3" onclick="storeValue(this.id)">3</button></td>
+        <td><button id="+" value="+" onclick="storeOperator(this.id)">+</button></td>
+    </tr>
+    <tr>
+        <td colspan="2"><button id="0" value="0" onclick="storeValue(this.id)" style="padding-right: 46px">0</button></td>
+        <td><button id="." value="." onclick="storeValue(this.id)">.</button></td>
+        <td><button id="=" value="=" onclick="buildEquation(numTest, operatorList)">=</button></td>
+    </tr>
+</table>
 
+
+<script>
+//    var listNum = [1, 2, 3, 4, 5];
+//    var listStr = ['1', '2', '3', '4', '5'];
+//
+//    for(var i = 0; i < listNum.length; i++){
+//        if( listNum[i] == listStr[i] ){
+//
+//            console.log(listNum[i]);
+//            console.log(listStr[i]);
+//            console.log("a number is = to a string");
+//            console.log(listNum[i] == listStr[i]);
+//        }
+//    }
+
+//    var test = document.getElementById("/");
+//    console.log(test.value);
+
+//    var firstNum = [];
+//    var numList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+//    var two = document.getElementById("2").value;
+//    for(var i = 0; i < numList.length; i++){
+//        if(two == numList[i]){
+//            firstNum.push(numList[i]);
+//            console.log(firstNum);
+//        }
+//    }
+//
+//    console.log(firstNum[0] + + + firstNum[0]);
+//
+//
+//
+//
+//    var firstNum = [];
+//    var operatorList = [];
+//
+//    function storeOperator(clickedId) {
+//        operatorList.push(document.getElementById(clickedId).value);
+//        console.log(operatorList);
+//        return operatorList;
+//    }
+//
+//    function storeValue(clickedId) {
+//
+//        var numList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+//        var num = document.getElementById(clickedId).value;
+//        for(var i = 0; i < numList.length; i++){
+//            if(num == numList[i]){
+//                firstNum.push(numList[i]);
+//                var test = firstNum.join('');
+//                var numTest = Number(test);
+//                console.log("numTest= " + numTest);
+//                return numTest;
+//            }
+//        }
+//    }
+//
+//
+//    var testEquation = ['2', '2', '+', '5'];
+//    var leftOperand = [];
+//    var rightOperand = [];
+//
+//    function performEquation(testEquation) {
+//        for (var i = 0; i < testEquation.length; i++) {
+//            if ('+' === testEquation[i]) {
+//                for (var j = 0; j < testEquation.indexOf('+'); j++) {
+//                    leftOperand.push(testEquation[j]);
+//                    console.log(leftOperand);
+//                    var toNumLeft = Number(leftOperand);
+////                    var joinNumsLeft = toNumLeft.join('');
+//                    console.log(toNumLeft);
+//                }
+//                for(var k = (testEquation.indexOf('+') + 1); k < testEquation.length; k++){
+//                    console.log('test');
+//                    rightOperand.push(testEquation[k]);
+//                    console.log(rightOperand);
+//                    var toNumRight = Number(rightOperand);
+////                    var joinNumsRight = toNumRight.join('');
+//                    console.log("right=" + toNumRight);
+//            }
+//            }
+//
+//        }
+//        function add(a,b){
+//            var result = a + b;
+//            console.log(result);
+//        }
+//        add(toNumLeft, toNumRight);
+//    }
+//
+//    performEquation(testEquation);
+</script>
 </body>
 </html>
