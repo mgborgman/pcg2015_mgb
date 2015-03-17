@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    tenants = [
+        {
+            "name": "Kevin Long",
+            "suite": 111
+        },
+        {
+            "name": "Kay Long",
+            "suite": 112
+        },
+        {
+            "name": "John Long",
+            "suite": 113
+        },
+        {
+            "name": "Jack Richards",
+            "suite": 211
+        },
+        {
+            "name": "Arthur Wright",
+            "suite": 212
+        },
+        {
+            "name": "abc",
+            "suite": 123
+        },
+        {
+            "name": "31 flavors",
+            "suite": 231
+        },
+        {
+            "name": "!@#$%^&*()",
+            "suite": 213
+        }
+    ];
+
+    var divElement = document.createElement('div');
+
+    function createIndexItem(letter){
+        var display = letter.toUpperCase();
+        var anchorElement = document.createElement('a');
+        anchorElement.setAttribute('href', '#' + display);
+        var text = document.createTextNode(display);
+        anchorElement.appendChild(text);
+        divElement.appendChild(anchorElement);
+    }
+
+
+    var a = 'a'.charCodeAt(0);
+    var z = 'z'.charCodeAt(0);
+    for(var c = a; c <= z; c++) {
+        var letter = String.fromCharCode(c);
+        createIndexItem(letter);
+//        console.log(letter);
+    }
+
+
+    divElement.setAttribute('style', 'position:fixed; top: 0;');
+
+    document.body.appendChild(divElement);
+
+    var directory = {};
+    for (var i in tenants) {
+        var t = tenants[i];
+//        console.log(t);
+        var names = t.name.split(' ');
+//        console.log(names);
+        if(names.length > 1) {
+            names.reverse();
+        }
+//        console.log(names);
+        var first_letter = names[0].charAt(0);
+//        console.log(first_letter);
+        var upper_first_letter = first_letter.toUpperCase();
+        if (!directory.hasOwnProperty(upper_first_letter)) {
+            directory[upper_first_letter] = [];
+        }
+        directory[upper_first_letter].push(t);
+
+    }
+
+    var keys = Object.keys(directory);
+    keys.sort();
+    for (var i in keys) {
+        var letter = keys[i];
+        console.log(letter);
+        var d = directory[letter];
+//        console.log(d.name);
+        var headerElement = document.createElement('h1');
+        var text = document.createTextNode(letter);
+        headerElement.setAttribute('id', letter);
+        headerElement.appendChild(text);
+        document.body.appendChild(headerElement);
+        for (i in d) {
+            var t = d[i];
+            var ulElement = document.createElement('ul');
+            var liElement = document.createElement('li');
+            var listText = document.createTextNode(t.name);
+            liElement.appendChild(listText);
+            ulElement.appendChild(liElement);
+            document.body.appendChild(ulElement);
+        }
+
+    }
+
+
+</script>
+</body>
+</html>

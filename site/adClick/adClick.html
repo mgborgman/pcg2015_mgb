@@ -9,10 +9,20 @@
 
 
 <script>
-    clicks = {
-        'a.example.com' : {
-            '2015-12-31' : 123
+   var clicks = [
+        {
+            'url' : 'a.example.com',
+            'date' : '2015-12-31'
+        },
+        {
+            'url' : 'b.example.com',
+            'date' : '2015-12-11'
+        },
+        {
+            'url' : 'a.example.com',
+            'date' : '2015-12-31'
         }
+<<<<<<< HEAD
     };
 
     newClicks = [
@@ -47,12 +57,41 @@
 
             }
 //        return clicks;
+=======
+   ];
+
+
+
+    function adClick() {
+        var days = {};
+        for(var i = 0; i < clicks.length; i++){
+            var item = clicks[i];
+            var date = item.date;
+            if(!days.hasOwnProperty(date)) {
+                days[date] = {};
+            }
+            var day = days[date];
+            if(!day.hasOwnProperty(item.url)) {
+                day[item.url] = {clicks : 0};
+                console.log(days);
+            }
+            var properties = day[item.url];
+            properties.clicks++;
+        }
+
+        for(dayKey in days){
+            var dayObject = days[dayKey];
+            for(var urlKey in dayObject){
+                var properties = dayObject[urlKey];
+                document.write(dayKey + " " + urlKey + " " + properties.clicks + "<br>");
+            }
+>>>>>>> 7137c588eba535809f17e946e5585ec3f7470e26
         }
     }
 
 
-//    console.log(clicks['a.example.com']);
-    adClick(newClicks);
+
+    adClick();
 </script>
 </body>
 </html>
