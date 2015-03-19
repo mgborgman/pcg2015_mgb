@@ -7,36 +7,36 @@
 <body>
 <table>
     <tr>
-        <td colspan="4">Test Output</td>
+        <td id='output' colspan="4">Test Output</td>
     </tr>
     <tr>
         <td><input type="button" id="AC" value="AC"></td>
         <td><input type="button" id="+/-" value="+/-"></td>
         <td><input type="button" id="%" value="%"></td>
-        <td><input type="button" id="/" value="/"></td>
+        <td><input type="button" id="/" value="/" onclick="buildEquation('/')"></td>
     </tr>
     <tr>
-        <td><input type="button" id="7" value="7"></td>
-        <td><input type="button" id="8" value="8"></td>
-        <td><input type="button" id="9" value="9"></td>
-        <td><input type="button" id="x" value="x"></td>
+        <td><input type="button" id="7" value="7" onclick="getInput(7)"></td>
+        <td><input type="button" id="8" value="8" onclick="getInput(8)"></td>
+        <td><input type="button" id="9" value="9" onclick="getInput(9)"></td>
+        <td><input type="button" id="x" value="x" onclick="buildEquation('x')"></td>
     </tr>
     <tr>
-        <td><input type="button" id="4" value="4"></td>
-        <td><input type="button" id="5" value="5"></td>
-        <td><input type="button" id="6" value="6"></td>
-        <td><input type="button" id="-" value="-"></td>
+        <td><input type="button" id="4" value="4" onclick="getInput(4)"></td>
+        <td><input type="button" id="5" value="5" onclick="getInput(5)"></td>
+        <td><input type="button" id="6" value="6" onclick="getInput(6)"></td>
+        <td><input type="button" id="-" value="-" onclick="buildEquation('-')"></td>
     </tr>
     <tr>
-        <td><input type="button" id="1" value="1"></td>
-        <td><input type="button" id="2" value="2"></td>
-        <td><input type="button" id="3" value="3"></td>
-        <td><input type="button" id="+" value="+"></td>
+        <td><input type="button" id="1" value="1" onclick="getInput(1)"></td>
+        <td><input type="button" id="2" value="2" onclick="getInput(2)"></td>
+        <td><input type="button" id="3" value="3" onclick="getInput(3)"></td>
+        <td><input type="button" id="+" value="+" onclick="buildEquation('+')"></td>
     </tr>
     <tr>
-        <td><input type="button" id="0" value="0"></td>
-        <td><input type="button" id="." value="."></td>
-        <td><input type="button" id="=" value="="></td>
+        <td><input type="button" id="0" value="0" onclick="getInput(0)"></td>
+        <td><input type="button" id="." value="." onclick="getInput('.')"></td>
+        <td><input type="button" id="=" value="=" onclick="evalEquation()"></td>
     </tr>
 </table>
 
@@ -45,92 +45,106 @@
 //    var listNum = [1, 2, 3, 4, 5];
 //    var listStr = ['1', '2', '3', '4', '5'];
 //
-//    for(var i = 0; i < listNum.length; i++){
-//        if( listNum[i] == listStr[i] ){
+//    var clickedId = document.getElementById("+").value;
 //
-//            console.log(listNum[i]);
-//            console.log(listStr[i]);
-//            console.log("a number is = to a string");
-//            console.log(listNum[i] == listStr[i]);
-//        }
+//    if(clickedId == '+'){
+//        console.log(2+2);
 //    }
 
-//    var test = document.getElementById("/");
-//    console.log(test.value);
+    var input = [];
+    var equation = [];
+    var operators = ['x','/','+','-'];
 
-//    var firstNum = [];
-//    var numList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-//    var two = document.getElementById("2").value;
-//    for(var i = 0; i < numList.length; i++){
-//        if(two == numList[i]){
-//            firstNum.push(numList[i]);
-//            console.log(firstNum);
-//        }
-//    }
-//
-//    console.log(firstNum[0] + + + firstNum[0]);
-//
-//
-//
-//
-//    var firstNum = [];
-//    var operatorList = [];
-//
-//    function storeOperator(clickedId) {
-//        operatorList.push(document.getElementById(clickedId).value);
-//        console.log(operatorList);
-//        return operatorList;
-//    }
-//
-//    function storeValue(clickedId) {
-//
-//        var numList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-//        var num = document.getElementById(clickedId).value;
-//        for(var i = 0; i < numList.length; i++){
-//            if(num == numList[i]){
-//                firstNum.push(numList[i]);
-//                var test = firstNum.join('');
-//                var numTest = Number(test);
-//                console.log("numTest= " + numTest);
-//                return numTest;
-//            }
-//        }
-//    }
-//
-//
-//    var testEquation = ['2', '2', '+', '5'];
-//    var leftOperand = [];
-//    var rightOperand = [];
-//
-//    function performEquation(testEquation) {
-//        for (var i = 0; i < testEquation.length; i++) {
-//            if ('+' === testEquation[i]) {
-//                for (var j = 0; j < testEquation.indexOf('+'); j++) {
-//                    leftOperand.push(testEquation[j]);
-//                    console.log(leftOperand);
-//                    var toNumLeft = Number(leftOperand);
-////                    var joinNumsLeft = toNumLeft.join('');
-//                    console.log(toNumLeft);
-//                }
-//                for(var k = (testEquation.indexOf('+') + 1); k < testEquation.length; k++){
-//                    console.log('test');
-//                    rightOperand.push(testEquation[k]);
-//                    console.log(rightOperand);
-//                    var toNumRight = Number(rightOperand);
-////                    var joinNumsRight = toNumRight.join('');
-//                    console.log("right=" + toNumRight);
-//            }
-//            }
-//
-//        }
-//        function add(a,b){
-//            var result = a + b;
-//            console.log(result);
-//        }
-//        add(toNumLeft, toNumRight);
-//    }
-//
-//    performEquation(testEquation);
+    function getInput(id){
+        var clickedId = document.getElementById(id).value;
+//        console.log(clickedId);
+//        var num = Number(clickedId);
+//        console.log(1+num);
+        input.push(clickedId);
+        console.log(input);
+
+    }
+
+    function buildEquation(id){
+        var operatorValue = document.getElementById(id).value;
+        input.push(operatorValue);
+        console.log(input);
+    }
+
+    function evalEquation(){
+        for(var i = 0; i < input.length; i++){
+            if(input[i] == 'x'){
+                console.log('found a multiplication sign');
+                var operatorIndex = input.indexOf('x');
+                console.log(operatorIndex);
+                var leftOperands = input.slice(0, operatorIndex);
+                leftOperands = leftOperands.join('');
+                leftOperands = Number(leftOperands);
+                console.log(leftOperands);
+                console.log(input);
+                var rightOperands = input.slice((operatorIndex + 1), input.length);
+                rightOperands = rightOperands.join('');
+                rightOperands = Number(rightOperands);
+                console.log(rightOperands);
+                var answer = leftOperands * rightOperands;
+                var output = document.getElementById('output');
+                output.innerHTML = answer;
+            }
+            else if(input[i] == '/'){
+                console.log('found a division sign');
+                operatorIndex = input.indexOf('/');
+                leftOperands = input.slice(0, operatorIndex);
+                leftOperands = leftOperands.join('');
+                leftOperands = Number(leftOperands);
+                console.log(leftOperands);
+                rightOperands = input.slice((operatorIndex + 1), input.length);
+                rightOperands = rightOperands.join('');
+                rightOperands = Number(rightOperands);
+                console.log(rightOperands);
+                answer = leftOperands / rightOperands;
+                output = document.getElementById('output');
+                output.innerHTML = answer;
+            }
+            else if(input[i] == '+'){
+                console.log('found a plus sign');
+                operatorIndex = input.indexOf('+');
+                leftOperands = input.slice(0, operatorIndex);
+                leftOperands = leftOperands.join('');
+                leftOperands = Number(leftOperands);
+                console.log(leftOperands);
+                rightOperands = input.slice((operatorIndex + 1), input.length);
+                rightOperands = rightOperands.join('');
+                rightOperands = Number(rightOperands);
+                console.log(rightOperands);
+                answer = leftOperands + rightOperands;
+                output = document.getElementById('output');
+                output.innerHTML = answer;
+            }
+            else if(input[i] == '-'){
+                console.log('found a minus sign');
+                operatorIndex = input.indexOf('-');
+                leftOperands = input.slice(0, operatorIndex);
+                leftOperands = leftOperands.join('');
+                leftOperands = Number(leftOperands);
+                console.log(leftOperands);
+                rightOperands = input.slice((operatorIndex + 1), input.length);
+                rightOperands = rightOperands.join('');
+                rightOperands = Number(rightOperands);
+                console.log(rightOperands);
+                answer = leftOperands - rightOperands;
+                output = document.getElementById('output');
+                output.innerHTML = answer;
+            }
+
+        }
+        input = [];
+    }
+
+
+
+
+
+
 </script>
 </body>
 </html>
