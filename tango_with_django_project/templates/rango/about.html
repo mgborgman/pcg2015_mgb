@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>About</title>
+</head>
+<body>
+    <h1>Rango says...</h1>
+    here is the {{ pagename }} page.<br><br>
+    <ul>
+        <li><a href="/rango/">Home</a> </li>
+        <li><a href="/rango/contact/">Contact</a> </li>
+    </ul><br><br>
+    <img src="{% static "images/rango_about.jpg" %}" alt="picture of rango">
+
+</body>
+</html>
