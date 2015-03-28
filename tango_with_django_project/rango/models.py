@@ -10,6 +10,13 @@ class Category(models.Model):
         verbose_name_plural = "Categories"
 
     def __str__(self):
+    views = models.IntegerField()
+    likes = models.IntegerField()
+
+    class Meta:
+        verbose_name_plural = 'Categories'
+
+    def __unicode__(self):
         return self.name
 
 
@@ -19,6 +26,5 @@ class Page(models.Model):
     url = models.URLField()
     views = models.IntegerField(default=0)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.title
-
