@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from rango.models import Category
+from rango.models import Category, Page
 
 
 def index(request):
@@ -18,5 +18,14 @@ def about(request):
 def contact(request):
     context_dict = {'email': "mgborgman@gmail.com"}
     return render(request, 'rango/contact.html', context_dict)
+
+
+def category(request):
+    context_dict = {}
+
+    try:
+        Category.Objects.get(slug = category_name_slug)
+        context_dict['category_name'] = category.name
+        
 
 
