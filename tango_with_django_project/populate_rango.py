@@ -11,7 +11,7 @@ from rango.models import Category, Page
 
 def populate():
     python_cat = add_cat('Python',
-                         views=128,
+                         views=12,
                          likes=64)
 
     add_page(cat=python_cat,

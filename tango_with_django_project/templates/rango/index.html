@@ -8,9 +8,16 @@
         <h1>Rango says...hello world!</h1>
 
         {% if categories %}
+        <h2>Most Liked</h2>
             <ul>
                 {% for category in categories %}
-                <li>{{ category.name }}</li>
+                <li><a href="/rango/category/{{ category.slug }}">{{ category.name }}</a> </li>
+                {% endfor %}
+            </ul>
+        <h2>Most Viewed</h2>
+            <ul>
+                {% for category in views %}
+                <li><a href="/rango/category/{{ category.slug }}"> {{ category.name }}</a> </li>
                 {% endfor %}
             </ul>
         {% else %}
