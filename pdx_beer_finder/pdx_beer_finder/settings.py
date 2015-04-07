@@ -26,7 +26,12 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
 
+TEMPLATE_DIRS = (
+    TEMPLATE_PATH,
+    TEMPLATE_PATH + 'beer_googles/',
+)
 # Application definition
 
 INSTALLED_APPS = (
@@ -36,6 +41,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'login',
+    'beer_googles',
 )
 
 MIDDLEWARE_CLASSES = (
