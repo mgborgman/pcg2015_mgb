@@ -6,7 +6,7 @@ from django.db.models import TextField
 
 
 class EntryAdmin(MarkdownModelAdmin):
-    list_display = ("title", "created", "published")
+    list_display = ("title", "created", "publish")
     prepopulated_fields = {"slug": ("title",)}
     formfield_overrides = {TextField: {'widget': AdminMarkdownWidget}}
 
