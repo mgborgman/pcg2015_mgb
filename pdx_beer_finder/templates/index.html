@@ -3,25 +3,41 @@
 
 
 {% block body_block %}
-    <!--{% for bar in bar %}-->
-        <!--<li>{{ bar.name }}</li>-->
-    <!--{% endfor %}-->
-
 <form method="post" action=".">
     {% csrf_token %}
     <label>
         Search For
         <input type="text" placeholder="Bars" name="bar_search" id="bar_search" value="{{ query }}"/>
     </label>
-    <input type="submit" value="search"/><br><br>
+    <input type="submit" name="bar_submit" value="search"/><br><br>
     <label>
         Search For
         <input type="text" placeholder="Beers" name="beer_search" id="beer_search" value="{{ query2 }}">
     </label>
-    <input type="submit" value="search"/>
+    <input type="submit" name="beer_submit" value="search"/>
 </form>
 
-{{ bar_results }}
-{{ beer_results }}
+{% for beer in beer_results %}
+        <ul>
+            <li>{{ beer }}</li>
+        </ul>
+
+    {% if beer in bar_list.beers.all %}
+        
+    {% endif %}
+
+{% endfor %}
+
+{% for bar in bar_results %}
+    {% for beer in bar.beers.all %}
+        <ul>
+            <li>{{ bar }}</li>
+            <ul>
+                <li>{{ beer }}</li>
+            </ul>
+        </ul>
+    {% endfor %}
+{% endfor %}
+
 
 {% endblock %}
