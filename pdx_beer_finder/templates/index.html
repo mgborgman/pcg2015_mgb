@@ -3,29 +3,46 @@
 
 
 {% block body_block %}
-<form method="post" action=".">
-    {% csrf_token %}
-    <label>
-        Search For
-        <input type="text" placeholder="Bars" name="bar_search" id="bar_search" value="{{ query }}"/>
-    </label>
-    <input type="submit" name="bar_submit" value="search"/><br><br>
-    <label>
-        Search For
-        <input type="text" placeholder="Beers" name="beer_search" id="beer_search" value="{{ query2 }}">
-    </label>
-    <input type="submit" name="beer_submit" value="search"/>
-</form>
+
+<div class="container">
+    <div class="jumbotron" id="search">
+            <form method="post" action="/pdxbeerfinder/index" name="bar_form" class="text-center">
+                {% csrf_token %}
+                <label>
+                    Search For
+                    <input type="text" placeholder="Bars" name="bar_search" id="bar_search" value="{{ query }}"/>
+                </label>
+                <button type="submit" class="btn btn-default btn-lg" name="bar_submit" value="{{ query }}">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
+                </button><br><br>
+            </form>
+            <p class="text-center">OR</p>
+            <form method="post" action="/pdxbeerfinder/index" name="beer_form" class="text-center">
+                {% csrf_token %}
+                <label>
+                    Search For
+                    <input type="text" placeholder="Beers" name="beer_search" id="beer_search" value="{{ query2 }}">
+                </label>
+                <button type="submit" class="btn btn-default btn-lg" name="beer_submit" value="{{ query2 }}">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
+                </button>
+            </form>
+    </div>
+</div>
+
+
 
 {% for beer in beer_results %}
+    {% for bar in beer.bars.all %}
+
         <ul>
             <li>{{ beer }}</li>
+            <ul>
+                <li>{{ bar }}</li>
+            </ul>
         </ul>
 
-    {% if beer in bar_list.beers.all %}
-        
-    {% endif %}
-
+    {% endfor %}
 {% endfor %}
 
 {% for bar in bar_results %}

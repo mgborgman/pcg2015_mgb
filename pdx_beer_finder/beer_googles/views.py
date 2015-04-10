@@ -14,19 +14,16 @@ def index(request):
         query = request.POST['bar_search']
         bar_results = Bar.objects.filter(name__contains=query)
 
+
     elif 'beer_submit' in request.POST:
 
         query2 = request.POST['beer_search']
         beer_results = Beer.objects.filter(name__contains=query2)
 
-
-
-
-
-
-
-
-
-
     context_dict = {'bar_results': bar_results, 'beer_results': beer_results, 'bar_list': bar_list, 'beer_list': beer_list}
     return render(request, 'index.html', context_dict)
+
+
+def welcome(request):
+    context_dict = {}
+    return render(request, 'welcome.html', context_dict)

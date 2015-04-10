@@ -17,7 +17,7 @@ class Beer(models.Model):
 class Bar(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
-    beers = models.ManyToManyField(Beer)
+    beers = models.ManyToManyField(Beer, related_name='bars')
 
     def __unicode__(self):
         return self.name
