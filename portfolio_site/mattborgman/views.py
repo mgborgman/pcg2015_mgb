@@ -14,11 +14,8 @@ class BlogDetail(generic.DetailView):
     template_name = "post.html"
 
 
-def index(request):
+def about(request):
     context_dict = {}
-    return render(request, 'index.html', context_dict)
+    return render(request, 'about.html', context_dict)
 
-def test(request):
-    context_dict = {}
-    return render(request, 'test.html', context_dict)
 

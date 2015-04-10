@@ -11,13 +11,14 @@
 </head>
 <body>
     <div class="container">
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container-fluid">
-                <button type="button" class="btn btn-default navbar-btn">Home</button>
-                <button type="button" class="btn btn-default navbar-btn">About</button>
-                <button type="button" class="btn btn-default navbar-btn">Email</button>
-                <button type="button" class="btn btn-default navbar-btn">Blog</button>
-            </div>
+        <nav class="navbar-default navbar-fixed-top">
+            <ul class="nav nav-pills navbar-center">
+                <li id="home_button" role="presentation" class="active"><a href="#home">Home</a></li>
+                <li id="about_button" role="presentation" onclick="myFunction(this)"><a href="#about">About</a></li>
+                <li id="contact_button" role="presentation"><a href="#contact">Contact</a></li>
+                <li id="blog_button" role="presentation"><a href="#blog">Blog</a></li>
+
+            </ul>
         </nav>
         {% block body_block %}
         {% endblock %}
@@ -38,5 +39,10 @@
 
 <script src="{% static 'js/bootstrap.min.js' %} "></script>
 <script src="{% static 'js/grayscale.js' %} "></script>
+<script>
+        function myFunction(button) {
+        button.addClass('active');
+    }
+</script>
 </body>
 </html>
