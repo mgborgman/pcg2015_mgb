@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from models import Bar, Beer
+from models import Bar, Beer, UserProfile, User
 
 
 # Create your views here.
@@ -27,3 +27,14 @@ def index(request):
 def welcome(request):
     context_dict = {}
     return render(request, 'welcome.html', context_dict)
+
+
+def register(request):
+    if request.POST:
+        username = request.POST['username']
+        email = request.POST['email']
+        User.objects._create_user()
+
+
+    context_dict = {'User': User}
+    return render(request, 'register.html', context_dict)

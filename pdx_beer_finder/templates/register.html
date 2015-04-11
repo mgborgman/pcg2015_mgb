@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+
+<form method="post" action="index">
+    {% csrf_token %}
+    <input name="username" id="username" placeholder="username">
+    <input name="email" id="email" placeholder="email">
+    <input type="submit" value="Register" name="submit">
+</form>
+
+
+
+
+{% endblock %}
