@@ -7,4 +7,5 @@ admin.site.register(models.BarRating)
 admin.site.register(models.BeerRating)
 admin.site.register(models.BeerComment)
 admin.site.register(models.BarComment)
+admin.site.register(models.UserProfile)
 
