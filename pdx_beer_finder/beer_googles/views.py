@@ -1,6 +1,8 @@
-from django.shortcuts import render
-from models import Bar, Beer, UserProfile, User
-
+from django.shortcuts import render, redirect
+from models import Bar, Beer, UserProfile
+from django.contrib.auth.models import User
+import re
+import json
 
 # Create your views here.
 
@@ -30,11 +32,20 @@ def welcome(request):
 
 
 def register(request):
+
+
+    user_list = list(User.objects.all().values_list('username', flat=True))
+
+
+
     if request.POST:
         username = request.POST['username']
         email = request.POST['email']
-        User.objects._create_user()
+        password = request.POST['password']
+        verify_password = request.POST['verify_password']
+        user = User.objects.create_user(username=username, email=email, password=password)
+        user.save()
+        redirect('index')
 
-
-    context_dict = {'User': User}
+    context_dict = {'user_list': json.dumps(user_list)}
     return render(request, 'register.html', context_dict)

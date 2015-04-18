@@ -11,3 +11,8 @@
 #welcome{
     margin-top: 20%;
 }
+
+.taken{
+    border-color: red;
+    background-color: red;
+}
