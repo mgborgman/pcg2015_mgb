@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from models import Bar, Beer, UserProfile
+from models import Bar, Beer
 from django.contrib.auth.models import User
-import re
+from django.contrib.auth import authenticate, login
 import json
 
 # Create your views here.
@@ -45,7 +45,34 @@ def register(request):
         verify_password = request.POST['verify_password']
         user = User.objects.create_user(username=username, email=email, password=password)
         user.save()
-        redirect('index')
 
     context_dict = {'user_list': json.dumps(user_list)}
     return render(request, 'register.html', context_dict)
+
+
+def signin(request):
+    disabled_account = "disabled account"
+    failed_login = "failed login"
+    test = "success"
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        if user.is_active:
+            login(request, user)
+            redirect()
+        else:
+            disabled_account
+    else:
+        failed_login
+
+
+
+    context_dict = {'disabled_account': disabled_account, 'failed_login': failed_login, 'test': test}
+    return render(request, 'sign_in.html', context_dict)
+
+
+def success(request):
+    context_dict = {}
+
+    return render(request, 'success.html', context_dict)
