@@ -65,7 +65,7 @@ class BeerComment(models.Model):
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User)
+    user = models.ForeignKey(User, null=True, blank=True)
 
     def __unicode__(self):
         return self.user.username

@@ -11,6 +11,9 @@ def index(request):
     beer_list = Beer.objects.all()
     bar_results = None
     beer_results = None
+    username = None
+    if request.user.is_authenticated():
+        username = request.user.username
     if 'bar_submit' in request.POST:
 
         query = request.POST['bar_search']
@@ -22,7 +25,7 @@ def index(request):
         query2 = request.POST['beer_search']
         beer_results = Beer.objects.filter(name__contains=query2)
 
-    context_dict = {'bar_results': bar_results, 'beer_results': beer_results, 'bar_list': bar_list, 'beer_list': beer_list}
+    context_dict = {'bar_results': bar_results, 'beer_results': beer_results, 'bar_list': bar_list, 'beer_list': beer_list, 'username': username}
     return render(request, 'index.html', context_dict)
 
 
@@ -53,22 +56,21 @@ def register(request):
 def signin(request):
     disabled_account = "disabled account"
     failed_login = "failed login"
-    test = "success"
-    username = request.POST.get('username')
-    password = request.POST.get('password')
-    user = authenticate(username=username, password=password)
-    if user is not None:
-        if user.is_active:
-            login(request, user)
-            redirect()
+
+    if request.POST:
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                return redirect('index')
+            else:
+                disabled_account
         else:
-            disabled_account
-    else:
-        failed_login
+            failed_login
 
-
-
-    context_dict = {'disabled_account': disabled_account, 'failed_login': failed_login, 'test': test}
+    context_dict = {}
     return render(request, 'sign_in.html', context_dict)
 
 

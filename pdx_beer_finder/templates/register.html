@@ -6,28 +6,52 @@
 
     var userList = {{ user_list | safe }};
 
-
-
     function checkUserName(){
         var username = document.getElementById('username');
         var usernameValue = username.value;
+        var errormsg = document.createElement('p');
+        var node = document.createTextNode("Username is Taken");
+        var element = document.getElementById('error_message');
+        errormsg.appendChild(node);
+        element.appendChild(errormsg);
+
         for(var i = 0; i < userList.length; i++){
             if(usernameValue == userList[i]){
-                console.log('error');
+                $('#error_message').show()
             }
+            else if(usernameValue == '') {
+               $('#error_message').hide()
+            }
+
         }
     }
 
-</script>
+    function validateEmail(){
+        var email = document.getElementById('email');
+        var re = \b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b;
 
-<form method="post" action="">
-    {% csrf_token %}
-    <input type="text" name="username" id="username" placeholder="username" onblur="checkUserName()">
-    <input type="text" name="email" id="email" placeholder="email">
-    <input type="password" name="password" id="password" placeholder="password">
-    <input type="password" name="verify_password" id="verify_password" placeholder="verify">
-    <input type="submit" value="Register" name="submit">
-</form>
+        if(!re.test(email.value)){
+            var errormessage = document.getElementById('error_message')
+            errormessage.innerHTML = 'Please Enter a Valid Email';
+        }
+
+    }
+
+</script>
+<div class="container">
+    <div class="jumbotron text-center" id="register">
+        <form method="post" action="">
+            {% csrf_token %}
+            <div id="error_message"></div>
+            <input type="text" name="username" id="username" placeholder="username" onblur="checkUserName()">
+            <input type="email" name="email" id="email" placeholder="email" onblur="validateEmail()">
+            <input type="password" name="password" id="password" placeholder="password">
+            <input type="password" name="verify_password" id="verify_password" placeholder="verify">
+            <input type="submit" value="Register" name="submit">
+        </form>
+    </div>
+</div>
+
 
 
 

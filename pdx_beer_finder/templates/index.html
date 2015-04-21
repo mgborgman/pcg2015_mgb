@@ -4,8 +4,10 @@
 
 {% block body_block %}
 
+
 <div class="container">
     <div class="jumbotron" id="search">
+        {{username}}
             <form method="post" action="/pdxbeerfinder/index" name="bar_form" class="text-center">
                 {% csrf_token %}
                 <label>
