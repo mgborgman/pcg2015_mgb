@@ -48,6 +48,7 @@ def register(request):
         verify_password = request.POST['verify_password']
         user = User.objects.create_user(username=username, email=email, password=password)
         user.save()
+        return redirect('success')
 
     context_dict = {'user_list': json.dumps(user_list)}
     return render(request, 'register.html', context_dict)
