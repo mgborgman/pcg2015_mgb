@@ -1,3 +1,4 @@
+
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -5,6 +6,7 @@ from django.contrib.auth.models import User
 class Beer(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
+    slug = models.SlugField(unique=True, default='')
 
     def __unicode__(self):
         return self.name
@@ -18,6 +20,7 @@ class Bar(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
     beers = models.ManyToManyField(Beer, related_name='bars')
+    slug = models.SlugField(unique=True, default='')
 
     def __unicode__(self):
         return self.name

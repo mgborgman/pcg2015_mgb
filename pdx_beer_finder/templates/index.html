@@ -12,9 +12,9 @@
                 {% csrf_token %}
                 <label>
                     Search For
-                    <input type="text" placeholder="Bars" name="bar_search" id="bar_search" value="{{ query }}"/>
+                    <input type="text" placeholder="Bars" name="bar_search" id="bar_search"/>
                 </label>
-                <button type="submit" class="btn btn-default btn-lg" name="bar_submit" value="{{ query }}">
+                <button type="submit" class="btn btn-default btn-lg" name="bar_submit">
                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
                 </button><br><br>
             </form>
@@ -23,9 +23,9 @@
                 {% csrf_token %}
                 <label>
                     Search For
-                    <input type="text" placeholder="Beers" name="beer_search" id="beer_search" value="{{ query2 }}">
+                    <input type="text" placeholder="Beers" name="beer_search" id="beer_search">
                 </label>
-                <button type="submit" class="btn btn-default btn-lg" name="beer_submit" value="{{ query2 }}">
+                <button type="submit" class="btn btn-default btn-lg" name="beer_submit">
                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
                 </button>
             </form>
@@ -45,14 +45,11 @@
         {% endfor %}
 
         {% for bar in bar_results %}
-            {% for beer in bar.beers.all %}
-                <ul>
-                    <li>{{ bar }} </li>
-                    <ul>
-                        <li>{{ beer }}</li>
-                    </ul>
-                </ul>
-            {% endfor %}
+            <ul>
+
+                <li><a href="/rango/category/{{ category.slug }}">{{ bar.name }}</a> </li>
+
+            </ul>
         {% endfor %}
 
         {{ user_info }}
