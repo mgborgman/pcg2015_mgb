@@ -79,3 +79,8 @@ def success(request):
     context_dict = {}
 
     return render(request, 'success.html', context_dict)
+
+
+def bar_data(request):
+    data = {'name': Bar.name, 'beer': Bar.beers, 'description': Bar.description}
+    json_bar_data = json.dumps(data)

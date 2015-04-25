@@ -6,7 +6,7 @@
 
 
 <div class="container">
-    <div class="jumbotron" id="search">
+    <div class="jumbotron main">
         {{username}}
             <form method="post" action="/pdxbeerfinder/index" name="bar_form" class="text-center">
                 {% csrf_token %}
@@ -30,35 +30,38 @@
                 </button>
             </form>
     </div>
+    <div class="jumbotron" >
+        {% for beer in beer_results %}
+            {% for bar in beer.bars.all %}
+
+                <ul>
+                    <li>{{ beer }}</li>
+                    <ul>
+                        <li>{{ bar }}</li>
+                    </ul>
+                </ul>
+
+            {% endfor %}
+        {% endfor %}
+
+        {% for bar in bar_results %}
+            {% for beer in bar.beers.all %}
+                <ul>
+                    <li>{{ bar }} </li>
+                    <ul>
+                        <li>{{ beer }}</li>
+                    </ul>
+                </ul>
+            {% endfor %}
+        {% endfor %}
+
+        {{ user_info }}
+
+
+    {% endblock %}
+
+    </div>
 </div>
 
 
 
-{% for beer in beer_results %}
-    {% for bar in beer.bars.all %}
-
-        <ul>
-            <li>{{ beer }}</li>
-            <ul>
-                <li>{{ bar }}</li>
-            </ul>
-        </ul>
-
-    {% endfor %}
-{% endfor %}
-
-{% for bar in bar_results %}
-    {% for beer in bar.beers.all %}
-        <ul>
-            <li>{{ bar }}</li>
-            <ul>
-                <li>{{ beer }}</li>
-            </ul>
-        </ul>
-    {% endfor %}
-{% endfor %}
-
-{{ user_info }}
-
-
-{% endblock %}
