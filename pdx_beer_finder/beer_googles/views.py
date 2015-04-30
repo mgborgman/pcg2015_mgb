@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from models import Bar, Beer
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 import json
 
 # Create your views here.
@@ -81,6 +81,39 @@ def success(request):
     return render(request, 'success.html', context_dict)
 
 
-def bar_data(request):
-    data = {'name': Bar.name, 'beer': Bar.beers, 'description': Bar.description}
-    json_bar_data = json.dumps(data)
+# def bar_data(request):
+#     data = {'name': Bar.name, 'beer': Bar.beers, 'description': Bar.description}
+#     json_bar_data = json.dumps(data)
+
+def bars(request, bar_slug):
+    context_dict = {}
+
+    try:
+        bar = Bar.objects.get(slug = bar_slug)
+        context_dict['bar_name'] = bar.name
+
+        beers = Beer.objects.filter(bars = bar)
+        context_dict['beers'] = beers
+        context_dict['bar'] = bar
+    except Bar.DoesNotExist:
+        pass
+
+    return render(request, 'bars.html', context_dict)
+
+def beers(request, beer_slug):
+    context_dict = {}
+
+    try:
+        beer = Beer.objects.get(slug = beer_slug)
+        context_dict['beer_name'] = beer.name
+        context_dict['beer'] = beer
+
+    except Beer.DoesNotExist:
+        pass
+
+    return render(request, 'beers.html', context_dict)
+
+def logout(request):
+    logout(request)
+    return redirect('signin')
+

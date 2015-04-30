@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+
+        <h1>{{ bar.name }}</h1>
+        <div>{{ bar.description }}</div>
+
+        <h2>Here are the beers currently on tap</h2>
+        {% for beer in bar.beers.all %}
+            <ul>
+                <li>{{ beer }}</li>
+            </ul>
+
+        {% endfor %}
+
+
+
+{% endblock %}

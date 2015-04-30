@@ -20,3 +20,7 @@
 .main{
     margin-top: 20%;
 }
+
+#usercontrol{
+    float: right;
+}

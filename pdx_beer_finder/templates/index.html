@@ -7,7 +7,7 @@
 
 <div class="container">
     <div class="jumbotron main">
-        {{username}}
+
             <form method="post" action="/pdxbeerfinder/index" name="bar_form" class="text-center">
                 {% csrf_token %}
                 <label>
@@ -32,22 +32,15 @@
     </div>
     <div class="jumbotron" >
         {% for beer in beer_results %}
-            {% for bar in beer.bars.all %}
-
-                <ul>
-                    <li>{{ beer }}</li>
-                    <ul>
-                        <li>{{ bar }}</li>
-                    </ul>
-                </ul>
-
-            {% endfor %}
+            <ul>
+                <li><a href="beers/{{ beer.slug }}">{{ beer.name }}</a> </li>
+            </ul>
         {% endfor %}
 
         {% for bar in bar_results %}
             <ul>
 
-                <li><a href="/rango/category/{{ category.slug }}">{{ bar.name }}</a> </li>
+                <li><a href="bars/{{ bar.slug }}">{{ bar.name }}</a> </li>
 
             </ul>
         {% endfor %}
