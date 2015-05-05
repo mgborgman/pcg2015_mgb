@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from models import Bar, Beer
+from models import Bar, Beer, BarRating
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 import json
@@ -9,11 +9,12 @@ import json
 def index(request):
     bar_list = Bar.objects.all()
     beer_list = Beer.objects.all()
+    bar_rating = BarRating.objects.all()
     bar_results = None
     beer_results = None
     username = None
     if request.user.is_authenticated():
-        username = request.user.username
+        username = request.user
     if 'bar_submit' in request.POST:
 
         query = request.POST['bar_search']
@@ -25,18 +26,22 @@ def index(request):
         query2 = request.POST['beer_search']
         beer_results = Beer.objects.filter(name__contains=query2)
 
-    context_dict = {'bar_results': bar_results, 'beer_results': beer_results, 'bar_list': bar_list, 'beer_list': beer_list, 'username': username}
+    context_dict = {'bar_results': bar_results, 'beer_results': beer_results, 'bar_list': bar_list, 'beer_list': beer_list, 'username': username, 'bar_rating': bar_rating}
     return render(request, 'index.html', context_dict)
 
 
 def welcome(request):
-    context_dict = {}
+    user = None
+    if request.user.is_authenticated():
+        user = request.user
+    context_dict = {'user':user}
     return render(request, 'welcome.html', context_dict)
 
 
 def register(request):
-
-
+    user = None
+    if request.user.is_authenticated():
+        user = request.user
     user_list = list(User.objects.all().values_list('username', flat=True))
 
 
@@ -50,11 +55,14 @@ def register(request):
         user.save()
         return redirect('success')
 
-    context_dict = {'user_list': json.dumps(user_list)}
+    context_dict = {'user_list': json.dumps(user_list), 'user':user}
     return render(request, 'register.html', context_dict)
 
 
 def signin(request):
+    user = None
+    if request.user.is_authenticated():
+        user = request.user
     disabled_account = "disabled account"
     failed_login = "failed login"
 
@@ -71,7 +79,7 @@ def signin(request):
         else:
             failed_login
 
-    context_dict = {}
+    context_dict = {'user':user}
     return render(request, 'sign_in.html', context_dict)
 
 
@@ -101,7 +109,10 @@ def bars(request, bar_slug):
     return render(request, 'bars.html', context_dict)
 
 def beers(request, beer_slug):
-    context_dict = {}
+    user = None
+    if request.user.is_authenticated():
+        user = request.user
+    context_dict = {'user':user}
 
     try:
         beer = Beer.objects.get(slug = beer_slug)
@@ -113,7 +124,8 @@ def beers(request, beer_slug):
 
     return render(request, 'beers.html', context_dict)
 
-def logout(request):
+
+def logout_view(request):
     logout(request)
     return redirect('signin')
 

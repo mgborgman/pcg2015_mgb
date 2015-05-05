@@ -29,8 +29,7 @@
                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
                 </button>
             </form>
-    </div>
-    <div class="jumbotron" >
+
         {% for beer in beer_results %}
             <ul>
                 <li><a href="beers/{{ beer.slug }}">{{ beer.name }}</a> </li>
@@ -38,14 +37,19 @@
         {% endfor %}
 
         {% for bar in bar_results %}
-            <ul>
 
-                <li><a href="bars/{{ bar.slug }}">{{ bar.name }}</a> </li>
+            <table>
+                <tr>
+                    <td><a href="bars/{{ bar.slug }}">{{ bar.name }}</a> </td>
+                    <td>{{ bar.description }}</td>
+                    <td>{{ bar_rating }}</td>
+                </tr>
 
-            </ul>
+
+
+            </table>
         {% endfor %}
 
-        {{ user_info }}
 
 
     {% endblock %}

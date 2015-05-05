@@ -36,7 +36,7 @@ class BarRating(models.Model):
     user = models.ForeignKey(User)
 
     def __unicode__(self):
-        return unicode(self.user)
+        return unicode(self.rating)
 
 
 class BeerRating(models.Model):

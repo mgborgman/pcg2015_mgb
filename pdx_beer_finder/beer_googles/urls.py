@@ -10,6 +10,6 @@ urlpatterns = patterns('',
                        url(r'^success$', views.success, name='success'),
                        url(r'^bars/(?P<bar_slug>[\w\-]+)/$', views.bars, name='bars'),
                        url(r'^beers/(?P<beer_slug>[\w\-]+)/$', views.beers, name='beers'),
-                       url(r'^logout$', views.logout, name='logout'),
+                       url(r'^logout$', views.logout_view, name='logout'),
 
                        )
